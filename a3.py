@@ -81,7 +81,7 @@ def title_by_year_range(matches: List[str]) -> List[str]:
         in ["1991", "1994"] you will get movies made in 1991, 1992, 1993 & 1994)
     """
     results = []
-    print(matches)
+    # print(matches)
     for movie in movie_db:
         
         if  int(matches[0]) <= get_year(movie) <= int(matches[1]):
@@ -105,13 +105,12 @@ def title_before_year(matches: List[str]) -> List[str]:
         pass in 1992 you won't get any movies made that year, only before)
     """
     results = []
-    print(matches)
+    # print(matches)
     for movie in movie_db:
         
         if  get_year(movie) < int(matches[0]):
             #print(get_title(movie))
             results.append(get_title(movie))
-    print (results)
     return results
 
 
@@ -127,13 +126,13 @@ def title_after_year(matches: List[str]) -> List[str]:
         pass in 1992 you won't get any movies made that year, only after)
     """
     results = []
-    print(matches)
+    # print(matches)
     for movie in movie_db:
         
         if  get_year(movie) > int(matches[0]):
             #print(get_title(movie))
             results.append(get_title(movie))
-    print (results)
+   
     return results
 
 
@@ -153,7 +152,7 @@ def director_by_title(matches: List[str]) -> List[str]:
         if  get_title(movie) == matches[0]:
            
             results.append(get_director(movie))
-    print (results)
+   
     return results
 
 
@@ -173,7 +172,7 @@ def title_by_director(matches: List[str]) -> List[str]:
         if  get_director(movie) == matches[0]:
            
             results.append(get_title(movie))
-    print (results)
+    
     return results
 
     
@@ -194,7 +193,6 @@ def actors_by_title(matches: List[str]) -> List[str]:
         if  get_title(movie) == matches[0]:
            
             results = get_actors(movie)
-    print (results)
     return results
 
 
@@ -214,7 +212,6 @@ def year_by_title(matches: List[str]) -> List[int]:
         if  get_title(movie) == matches[0]:
            
             results.append(get_year(movie))
-    print (results)
     return results
 
 
@@ -234,7 +231,6 @@ def title_by_actor(matches: List[str]) -> List[str]:
         if  matches[0] in get_actors(movie):
            
             results.append(get_title(movie))
-    print (results)
     return results
 
 
@@ -275,7 +271,15 @@ def search_pa_list(src: List[str]) -> List[str]:
         a list of answers. Will be ["I don't understand"] if it finds no matches and
         ["No answers"] if it finds a match but no answers
     """
-    pass
+    for pat, act in pa_list:
+        mat = match(pat,src)
+       
+       
+        if mat is not None:
+           answer = act(mat)
+           return answer if answer else ["No answers"]
+       
+    return ["I don't understand"]
 
 
 def query_loop() -> None:

@@ -434,16 +434,18 @@ movie_db: List[Tuple[str, str, int, List[str]]] = [
             "delroy lindo",
             "spike lee",
         ],
-
-        "Final Destination"
-        "ali larter"
+    ),
+    (
+        "Final Destination",
+        "ali larter",
         2000,
         [
-            "devon sawa"
-            "tony todd"
-            "kerr smith"
-            "seann william scott"
-            "amanda detmer"
+            "devon sawa",
+            "tony todd",
+            "kerr smith",
+            "seann william scott",
+            "amanda detmer",
         ]
     )
+    
 ]
